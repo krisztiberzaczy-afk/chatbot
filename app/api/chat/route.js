@@ -1,7 +1,7 @@
 export async function POST(req) {
   const { messages } = await req.json();
 
-  const response = await fetch("https://api.openai.com/v1/responses", {
+  const res = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -13,7 +13,7 @@ export async function POST(req) {
     })
   });
 
-  const data = await response.json();
+  const data = await res.json();
 
   return Response.json(data);
 }
